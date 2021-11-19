@@ -6,7 +6,7 @@ import java.sql.Statement;
 
 public class JavaApp {
     static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://[ip]/[database]";
+    static final String DB_URL = "jdbc:mysql://120.48.0.79/linux_final";
     static final String USER = "root";
     static final String PASS = "!Tong0130";
 
@@ -22,7 +22,7 @@ public class JavaApp {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
-                System.out.printf("id: %d, name: $s", id, name);
+                System.out.printf("id:" + id + "name" + name);
             }
             rs.close();
             stmt.close();
