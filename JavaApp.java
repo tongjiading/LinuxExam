@@ -17,12 +17,14 @@ public class JavaApp {
             Class.forName(JDBC_DRIVER);
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             stmt = conn.createStatement();
-            String sql = "SELECT id, name FROM t_student WHERE id=4";
+            String sql = "SELECT * FROM t_student WHERE id=4";
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
-                System.out.printf("id:" + id + "name" + name);
+		int age = rs.getInt("age");
+                String address = rs.getString("address");	
+                System.out.println("id: " + id + " name: " + name + " address: "+ address + " age: " + age);
             }
             rs.close();
             stmt.close();
