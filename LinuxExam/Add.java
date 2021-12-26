@@ -20,7 +20,7 @@ public class Add extends HttpServlet {
             "jdbc:mysql://120.48.0.79/bookmanager?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8";
     static final String USER = "root";
     static final String PASS = "!Tong0130";
-    static final String SQL_ADD_NOTEPAD = "INSERT INTO book (id,name,price) values (?,?,?)";
+    static final String SQL_ADD_BOOK = "INSERT INTO book (id,name,price) values (?,?,?)";
 
     static Connection conn = null;
     static Jedis jedis = null;
@@ -29,7 +29,7 @@ public class Add extends HttpServlet {
         try {
             Class.forName(JDBC_DRIVER);
             conn = DriverManager.getConnection(URL, USER, PASS);
-            jedis = new Jedis("180.76.142.74");
+            jedis = new Jedis("120.48.0.79");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -67,7 +67,7 @@ public class Add extends HttpServlet {
         Boolean flag = null;
         PreparedStatement ps = null;
         try {
-            ps = conn.prepareStatement(SQL_ADD_NOTEPAD);
+            ps = conn.prepareStatement(SQL_ADD_BOOK);
             ps.setString(1,book.getId());
             ps.setString(2,book.getName());
             ps.setString(3,book.getPrice());

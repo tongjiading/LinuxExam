@@ -17,7 +17,7 @@ public class Query extends HttpServlet {
             "jdbc:mysql://120.48.0.79/bookmanager?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8";
     static final String USER = "root";
     static final String PASS = "!Tong0130";
-    static final String SQL_QUERY_NOTEPAD = "SELECT * FROM book;";
+    static final String SQL_QUERY_BOOK = "SELECT * FROM book;";
 
     static Connection conn = null;
     static Jedis jedis = null;
@@ -26,7 +26,7 @@ public class Query extends HttpServlet {
         try {
             Class.forName(JDBC_DRIVER);
             conn = DriverManager.getConnection(URL, USER, PASS);
-            jedis = new Jedis("180.76.142.74");
+            jedis = new Jedis("120.48.0.79");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -73,7 +73,7 @@ public class Query extends HttpServlet {
         Statement stmt = null;
         try {
             stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(SQL_QUERY_NOTEPAD);
+            ResultSet rs = stmt.executeQuery(SQL_QUERY_BOOK);
             while (rs.next()) {
                 Book book = new Book();
                 book.setId(rs.getString("id"));

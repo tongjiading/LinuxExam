@@ -17,7 +17,7 @@ public class Delete extends HttpServlet {
             "jdbc:mysql://120.48.0.79/bookmanager?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8";
     static final String USER = "root";
     static final String PASS = "!Tong0130";
-    static final String SQL_DELETE_NOTEPAD = "DELETE FROM book WHERE id = ?";
+    static final String SQL_DELETE_BOOK = "DELETE FROM book WHERE id = ?";
 
     static Connection conn = null;
     static Jedis jedis = null;
@@ -26,7 +26,7 @@ public class Delete extends HttpServlet {
         try {
             Class.forName(JDBC_DRIVER);
             conn = DriverManager.getConnection(URL, USER, PASS);
-            jedis = new Jedis("180.76.142.74");
+            jedis = new Jedis("120.48.0.79");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -64,7 +64,7 @@ public class Delete extends HttpServlet {
         Boolean flag = null;
         PreparedStatement ps = null;
         try {
-            ps = conn.prepareStatement(SQL_DELETE_NOTEPAD);
+            ps = conn.prepareStatement(SQL_DELETE_BOOK);
 
             ps.setString(1,book.getId());
 
